@@ -1,0 +1,56 @@
+[
+    {
+      "precio": 70000,
+      "id": 1,
+      "title": "Combo PC Escritorio 1",
+      "thumbnailUrl": "pc.jpg"
+    },
+    {
+      "precio": 50000,
+      "id": 2,
+      "title": "Combo PC Escritorio 2",
+      "thumbnailUrl": "pc.jpg"
+    },
+    {
+      "precio": 30000,
+      "id": 3,
+      "title": "Notebook",
+      "thumbnailUrl": "pc.jpg"
+    },
+    {
+      "precio": 1500,
+      "id": 4,
+      "title": "Manga Dr.Stone",
+      "thumbnailUrl": "https://picsum.photos/id/30/600"
+    },
+    {
+      "precio": 1000,
+      "id": 5,
+      "title": "Manga ChainsawMan",
+      "thumbnailUrl": "https://picsum.photos/id/40/600"
+    },
+    {
+      "precio": 900,
+      "id": 6,
+      "title": "Manga The Promised Neverland",
+      "thumbnailUrl": "https://picsum.photos/id/50/600"
+    },
+    {
+      "precio": 700,
+      "id": 6,
+      "title": "Libro La divina comedia",
+      "thumbnailUrl": "https://picsum.photos/id/50/600"
+    },
+    {
+      "precio": 600,
+      "id": 6,
+      "title": "Libro Cosmo - Carl Sagan",
+      "thumbnailUrl": "https://picsum.photos/id/50/600"
+    },
+    {
+      "precio": 6000,
+      "id": 6,
+      "title": "Coleccion de libros Harry Potter",
+      "thumbnailUrl": "https://picsum.photos/id/50/600"
+    }
+  ]
