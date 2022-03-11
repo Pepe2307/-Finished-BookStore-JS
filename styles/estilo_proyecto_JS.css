@@ -14,10 +14,8 @@ body{
 
 
     margin: 0;
-    padding: 20;
-    padding-left: 30px;
 
-    background: url(../assets/azul.jpg);   
+    background: rgba(23,42,85,255);   
     background-size: cover;
     background-position: center;
     font-family: 'Lobster', cursive;
@@ -50,24 +48,28 @@ body::-webkit-scrollbar-thumb{
     margin: 0 auto;
     background-color: rgb(34, 59, 151);
     border-radius: 35px;
+
+    animation: fadeInUp;
+    animation-duration: 2s; 
 }
 
 .titulo_header{
     position: absolute;
     display: inline-block;
-    margin: auto;
-    margin-left: 15%;
+    margin-left: 3%;
     
     
     font-size: 60px;
    
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     background-image: url(../assets/FondoTitulo.jpg);
     background-attachment: fixed;
 }
 .menu_header{
     float:right;
+    margin-top: 16px;
     padding: 0;
     height:100%;
     display: table;
@@ -129,65 +131,6 @@ body::-webkit-scrollbar-thumb{
 
 
 
-/**************************************    GALERIA    *********************/
-.galeria{
-    flex: 1;    
-    margin-top: 20vh;
-    
-    border-top: 60px;
-    border-bottom: 60px;
-    margin: 20px solid rgba( 23, 42, 110);
-    
-    border-radius: 20px;
-    box-shadow: 0 0 30px 25px rgba(0,0,0,0.50);
-    margin-bottom: 100px;
-}
-
-.galeria_imagenes{
-    display: grid;
-    grid-template-columns: repeat(3,3fr);
-}
-
-.galeria_imagenes img{
-    position: relative;
-    background:transparent;
-    /* Borrar */
-
-    border-radius: 20px;
-    padding:10px;
-    transition: 800ms;
-}
-
-.galeria_imagenes img:hover{
-    transform: scale(1.1);
-    z-index: 100;
-}
-
-.galeria_imagenes a{
-    display: inline-block;
-    text-align: center;
-
-    font-size: 30px;
-    margin: auto;
-    padding-top: 1vh;
-    padding-bottom: 3vh;
-
-
-    background: linear-gradient(to right, rgb(35, 78, 136), rgb(76, 76, 212) 50%, rgb(255, 255, 255) 50%);
-
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% 100%;
-    background-position: 100%;
-
-    transition: background-position 800ms ease;
-}
-.galeria_imagenes a:hover{
-    background-position: 0 100%;
-
-    /*background: rgb(255, 255, 255);*/
-}
 
 
 
@@ -214,25 +157,108 @@ body::-webkit-scrollbar-thumb{
     opacity: 0;
     transition: opacity 0.2s, top 0.2s, visibility 0.2s;
 }
-
 .toast--visible{
     top: 90px;
     opacity: 1;
     visibility: visible;
   }
-
   .toast--success {
     background: #00c02b;
     border-color: #009d23;
     color: #ffffff;
   }
-  
   .toast--error {
     background: #d50000;
     border-color: #ba0000;
     color: #ffffff;
   }
-/**************************************    VENTAS   *********************/
+
+
+
+
+
+
+
+/**************************************    TIENDA / SHOP    *********************/
+.container{
+    color: white !important;
+}
+#tabla_items{
+    color: white !important;
+    background-color: rgb(70, 181, 218);
+    border-radius: 20px;
+    box-shadow: 0 0 30px 25px rgba(0,0,0,0.50);
+}
+.titular{
+    font-size: 50px;
+    margin-top: 120px;
+    margin-bottom: 40px;
+}
+
+#cards{
+    background-color: rgb(44, 104, 214) !important;
+    color: red !important;
+    border: 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 30px 25px rgba(0,0,0,0.50);
+}
+.card{
+    background-color: rgba(5,7,12, 0.50)!important;
+    color: rgb(255, 255, 255) !important;
+    margin: 20px;
+    padding: 20px;
+    border: 20px;
+    border-radius: 20px;
+}
+
+
+.btn-dark{
+    font-size: 30px;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding: 2vh;
+    margin-top: 2vh;
+    border-radius: 80px;
+    border: 0.2rem solid white;
+
+
+    background: rgba( 23, 42, 110);
+}
+
+.btn-dark:hover{
+    background: rgb(34, 61, 160);
+    
+    border: 0.2rem solid white;
+    border-radius: 80px;
+    box-shadow:
+    0 0 .2rem #fff,
+    0 0 .2rem #fff,
+    0 0 2rem rgb(14, 26, 70),
+    0 0 0.8rem rgb(15, 39, 128),
+    0 0 2.8rem rgb(10, 47, 184),
+    inset 0 0 1.3rem rgb(2, 54, 243);
+}
+
+.card img{
+    border-radius: 80px;
+    padding:10px;
+    transition: 800ms;
+}
+
+.card img:hover{
+    transform: scale(1.05);
+}
+
+
+
+
+
+
+
+
+
+
+/**************************************    CALCULADORA DE VENTAS   *********************/
 .ventas{
     display: flex;
     flex-direction: row;
@@ -243,7 +269,6 @@ body::-webkit-scrollbar-thumb{
     border-radius: 5%;   
     box-shadow: 0 0 30px 25px rgba(0,0,0,0.50);
 }
-
 .ventas p{
     font-size: 2.5vh;
 }
@@ -251,8 +276,8 @@ body::-webkit-scrollbar-thumb{
 .ventas_inputs{
     flex:1;
 }
-
 .tabla{
+    display: none;
     flex:1;
     background-color:rgba(5,7,12, 0.20);
     border-radius: 20%;
@@ -272,14 +297,78 @@ body::-webkit-scrollbar-thumb{
     font-size: 10vh;
 }
 
-
-
-
 .simulador_cuotas{
     margin-left: 3%;
     font-size: 20px;
     color: brown;
 }
+
+
+
+
+
+
+
+/**************************************    Boton de inicio    *********************/
+.boton_top{
+    position: fixed;
+
+    bottom: 8vh;
+    right: 0;
+
+    transform: translate(-20px,-20px);
+
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    
+    
+    border-radius: 50px;
+    background:rgb(156, 156, 156);
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 2);
+    z-index: 100;
+}
+.boton_top:hover{
+    text-decoration: underline;
+    background: white;
+    color: rgb(156, 156, 156);
+}
+/**************************************    Boton de WhatsApp   *********************/
+.boton_whatsapp{
+    position: fixed;
+
+    
+    bottom: 0;
+    right: 0;
+
+    transform: translate(-20px,-20px);
+    
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    
+
+
+    border-radius: 50px;
+    background: green;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 2);
+    z-index: 100;
+}
+.boton_whatsapp:hover{
+    text-decoration: none;
+    color: green;
+    background: white;
+}
+
+
+
+
 
 /**************************************    FOOTER   *********************/
 .footer{
@@ -290,7 +379,7 @@ body::-webkit-scrollbar-thumb{
     flex-flow: row, wrap;
     justify-content: space-around;
     align-items:center;
-
+    margin-top: 70px;
     width: 100%;
     height: 400px;
 
@@ -300,9 +389,11 @@ body::-webkit-scrollbar-thumb{
     border-top: 6px solid;
     border-color: rgba( 23, 42, 110);
 
-    background: transparent;
-    background-image: url(../assets/fondo.jpg);
+    background:rgb(23,42,85);
     background-attachment: fixed;
+
+    box-shadow: 0 0 30px 25px rgba(0,0,0,0.50);
+
 }
 
 
@@ -353,58 +444,60 @@ body::-webkit-scrollbar-thumb{
 }
 
 
+/**************************************    RESPONSIVE MOBILE   *********************/
 
+/*Vista Mobile*/
+@media screen and (max-width: 1080px){
 
+    /*Header*/
+    .menu_header{
+        display: none;
+    }
 
+    .header{
+        width: 70%;
+    }
+    .titulo_header{
+        margin-left: 15%;
+    }
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* CARRITO DE COMPRAS */
-.container{
-    color: white !important;
+/*FOOTER*/
+.footer{
+    flex: 1;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    align-content: center;
+    flex-direction: column;
+    align-items: center; 
+    justify-items: center;
+    justify-content: center;
+    gap: 2vh;
 }
-#tabla_items{
-    color: white !important;
-    background-color: rgb(70, 181, 218);
-    border-radius: 20px;
+.footer .footer_contacto{
+    margin-left: 0;
+    margin-top: 4vh;
 }
-.titular{
-    font-size: 50px;
+.footer .iconos_redes{
+    margin-left: 0;
+    margin-bottom: 2vh;
 }
-
-#template-carrito{
-    background-color: red !important;
-    color: red !important;
-}
-#template-footer{
-    background-color: red !important;
-    color: red !important;
+.mapa{
+    display: none;
 }
 
-#template-card{
-    background-color: red !important;
-    color: red !important;
+    /*Botones Wsp/Top_Page Desactivados en Mobile*/
+    .Top_Button{
+        display: none;
+    }
+    .whatsapp{
+        display: none;
+    }
 }
-#cards{
-    background-color: rgb(44, 104, 214) !important;
-    color: red !important;
-    border: 20px;
-}
-.card{
-    background-color: rgba(5,7,12, 0.50)!important;
-    color: rgb(255, 255, 255) !important;
-    margin: 20px;
-    padding: 20px;
-    border: 20px;
+
+@media screen and (max-width: 800px){
+    .titulo_header{
+        margin-left: 8%;
+    }
 }

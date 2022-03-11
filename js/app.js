@@ -11,13 +11,16 @@ const fragment = document.createDocumentFragment()
 let carrito = {}
 
 // Eventos
-// El evento DOMContentLoaded es disparado cuando el documento HTML ha sido completamente cargado y parseado
+// El evento DOMContentLoaded cuando se carga el HTML
 document.addEventListener('DOMContentLoaded', (e) => {
   fetchData()
 })
+
 cards.addEventListener('click', (e) => {
   addCarrito(e)
+  dynamicToastify(e)
 })
+
 items.addEventListener('click', (e) => {
   btnAumentarDisminuir(e)
 })
@@ -30,23 +33,55 @@ const fetchData = async () => {
   pintarCards(data)
 }
 
+
+
+
+
+
 // Pintar productos
 const pintarCards = (data) => {
   data.forEach((item) => {
     templateCard.querySelector('h5').textContent = item.title
     templateCard.querySelector('p').textContent = item.precio
+    templateCard.querySelector('img').setAttribute("src", item.picture)
+
     templateCard.querySelector('button').dataset.id = item.id
+    templateCard.querySelector('button').setAttribute("id", item.id_2)
+    /*templateCard.querySelector('button').onclick = dynamicToastify('button')*/
+
     const clone = templateCard.cloneNode(true)
     fragment.appendChild(clone)
   })
   cards.appendChild(fragment)
 }
 
+// Agregar el Toast SE MOVIO A TOAST JS
+/*const dynamicToastify = (e) => {
+
+  if (e.target.classList.contains('btn-dark')) {
+
+    Toastify({
+      text: "Producto agregado",
+      className:"success",
+      duration: 3000,
+      position: "center",
+      style:{
+              background: "rgb(22, 73, 156)",
+              color: "rgb(255, 255, 255)",
+              border: "1px solid lightblue",
+              borderRadius: "20px",
+              fontSize: "25px",
+            }
+      
+      }).showToast();
+
+    }
+}
+*/
+
 // Agregar al carrito
 const addCarrito = (e) => {
   if (e.target.classList.contains('btn-dark')) {
-    // console.log(e.target.dataset.id)
-    // console.log(e.target.parentElement)
     setCarrito(e.target.parentElement)
   }
   e.stopPropagation()
