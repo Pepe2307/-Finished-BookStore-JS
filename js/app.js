@@ -1,6 +1,5 @@
 ///////////////////////////////////   CARRITO DE COMPRAS   /////////////////////////////////////////
 
-//QUEDAN VARIAS COSAS POR ARREGLAR Y AGREGAR
 const cards = document.getElementById('cards')
 const items = document.getElementById('items')
 const footer = document.getElementById('footer')
@@ -10,10 +9,18 @@ const templateCarrito = document.getElementById('template-carrito').content
 const fragment = document.createDocumentFragment()
 let carrito = {}
 
+
+
 // Eventos
-// El evento DOMContentLoaded cuando se carga el HTML
+// El evento DOMContentLoaded aparece cuando se carga el HTML
 document.addEventListener('DOMContentLoaded', (e) => {
   fetchData()
+
+  //LOCAL STORAGE 1
+  if (localStorage.getItem('carrito')){
+    carrito = JSON.parse(localStorage.getItem('carrito'))
+    pintarCarrito()
+  } 
 })
 
 cards.addEventListener('click', (e) => {
@@ -25,6 +32,9 @@ items.addEventListener('click', (e) => {
   btnAumentarDisminuir(e)
 })
 
+
+
+
 // Traer productos
 const fetchData = async () => {
   const res = await fetch('./db/api.json')
@@ -32,10 +42,6 @@ const fetchData = async () => {
   // console.log(data)
   pintarCards(data)
 }
-
-
-
-
 
 
 // Pintar productos
@@ -47,7 +53,6 @@ const pintarCards = (data) => {
 
     templateCard.querySelector('button').dataset.id = item.id
     templateCard.querySelector('button').setAttribute("id", item.id_2)
-    /*templateCard.querySelector('button').onclick = dynamicToastify('button')*/
 
     const clone = templateCard.cloneNode(true)
     fragment.appendChild(clone)
@@ -55,31 +60,9 @@ const pintarCards = (data) => {
   cards.appendChild(fragment)
 }
 
-// Agregar el Toast SE MOVIO A TOAST JS
-/*const dynamicToastify = (e) => {
 
-  if (e.target.classList.contains('btn-dark')) {
 
-    Toastify({
-      text: "Producto agregado",
-      className:"success",
-      duration: 3000,
-      position: "center",
-      style:{
-              background: "rgb(22, 73, 156)",
-              color: "rgb(255, 255, 255)",
-              border: "1px solid lightblue",
-              borderRadius: "20px",
-              fontSize: "25px",
-            }
-      
-      }).showToast();
-
-    }
-}
-*/
-
-// Agregar al carrito
+///////////////////////////////////   AGREGAR AL CARRITO   /////////////////////////////////////
 const addCarrito = (e) => {
   if (e.target.classList.contains('btn-dark')) {
     setCarrito(e.target.parentElement)
@@ -88,14 +71,12 @@ const addCarrito = (e) => {
 }
 
 const setCarrito = (item) => {
-  // console.log(item)
   const producto = {
     title: item.querySelector('h5').textContent,
     precio: item.querySelector('p').textContent,
     id: item.querySelector('button').dataset.id,
     cantidad: 1
   }
-  // console.log(producto)
   if (carrito.hasOwnProperty(producto.id)) {
     producto.cantidad = carrito[producto.id].cantidad + 1
   }
@@ -114,7 +95,7 @@ const pintarCarrito = () => {
     templateCarrito.querySelectorAll('td')[1].textContent = producto.cantidad
     templateCarrito.querySelector('span').textContent = producto.precio * producto.cantidad
 
-    //botones
+    //Botones
     templateCarrito.querySelector('.btn-info').dataset.id = producto.id
     templateCarrito.querySelector('.btn-danger').dataset.id = producto.id
 
@@ -124,6 +105,8 @@ const pintarCarrito = () => {
   items.appendChild(fragment)
 
   pintarFooter()
+
+  localStorage.setItem('carrito', JSON.stringify(carrito)) //LOCAL STORAGE 2
 }
 
 const pintarFooter = () => {
@@ -131,18 +114,17 @@ const pintarFooter = () => {
 
   if (Object.keys(carrito).length === 0) {
     footer.innerHTML = `
-        <th scope="row" colspan="5">Carrito vacío con innerHTML</th>
+        <th scope="row" colspan="5" style="text-align: center;">Carrito vacío</th>
         `
     return
   }
 
-  // sumar cantidad y sumar totales
+                  //Sumar cantidad y sumar totales
   const nCantidad = Object.values(carrito).reduce((acc, { cantidad }) => acc + cantidad, 0)
   const nPrecio = Object.values(carrito).reduce(
     (acc, { cantidad, precio }) => acc + cantidad * precio,
     0
   )
-  // console.log(nPrecio)
 
   templateFooter.querySelectorAll('td')[0].textContent = nCantidad
   templateFooter.querySelector('span').textContent = nPrecio
@@ -160,7 +142,6 @@ const pintarFooter = () => {
 }
 
 const btnAumentarDisminuir = (e) => {
-  // console.log(e.target.classList.contains('btn-info'))
   if (e.target.classList.contains('btn-info')) {
     const producto = carrito[e.target.dataset.id]
     producto.cantidad++
@@ -181,6 +162,15 @@ const btnAumentarDisminuir = (e) => {
   e.stopPropagation()
 }
 
+
+
+
+
+
+
+
+
+
 ///////////////////////////////////   CALCULADORA DE PRECIOS   /////////////////////////////////////
 var tb = document.getElementById('info')
 
@@ -198,7 +188,7 @@ const formEl = document.querySelector('form')
 const tbodyEl = document.querySelector('tbody')
 const tableEl = document.querySelector('table')
 
-///////////////////////////////
+//Agregar
 function agregar() {
   //Asignar variables
   var prod = document.getElementById('Tipo_Producto').value
@@ -234,24 +224,11 @@ function agregar() {
       '\n' +
       '\n' +
       objetos_de_compras.join('\n')
-  ) //Agregar precios
+  )
 
-  //objetos_de_compras.push(new Producto(prod , precio ))
-
-  //Agregar a la lista EN PROGRESO
-  e.preventDefault()
-  var precio = +document.getElementById('Precio').value
-  var cantidad = +document.getElementById('Cantidad').value
-
-  tbodyEl.innerHTML += `
-            <tr>
-                <td>${precio}</td>
-                <td>${cantidad}</td>
-                <td><button class="deleteBtn">Delete</button></td>
-            </tr>
-            `
 }
 
+//Cuotas con ENTER
 window.addEventListener('keydown', checkKeyPress, false)
 
 function checkKeyPress(key) {

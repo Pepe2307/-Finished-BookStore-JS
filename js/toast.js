@@ -1,3 +1,4 @@
+//Toast Bienvenida
 Toastify({
     text: "Bienvenido",
     className:"success",
@@ -13,25 +14,8 @@ Toastify({
     }).showToast();
 
 
-/*
-const boton_1 = document.getElementById("boton_1")
-boton_1.onclick = () => {
- 
-    Toastify({
-        text: "Producto agregado: PC GAMER",
-        duration: 3000,
-        position: "center",
-        style:{
-            background: "rgb(22, 73, 156)",
-            color: "rgb(255, 255, 255)",
-            border: "1px solid lightblue",
-        }
-        
-        }).showToast();
-}
-*/
 
-// Agregar el Toast
+// Toast de Compra
 const dynamicToastify = (e) => {
 
     if (e.target.classList.contains('btn-dark')) {

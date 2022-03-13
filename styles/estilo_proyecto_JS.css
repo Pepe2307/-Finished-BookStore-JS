@@ -8,9 +8,9 @@ html{
 body{
     display: flex;
     flex-direction: column;
-    align-items: center; /*estos dos son experimentales */
+    align-items: center;
     justify-content: space-between;
-    gap: 2vh; /* PARA SEPARACIONES ENTRE FLEX */
+    gap: 2vh;
 
 
     margin: 0;
@@ -20,7 +20,6 @@ body{
     background-position: center;
     font-family: 'Lobster', cursive;
     color: white;
-    /* background-repeat: no-repeat; */
 }
 
 body::-webkit-scrollbar{
@@ -30,7 +29,6 @@ body::-webkit-scrollbar{
 body::-webkit-scrollbar-thumb{
     background:rgba(75, 97, 223, 0.801);
     border-radius:10pt;
-    /*border-right: 2px solid rgba( 23, 42, 110);*/
 }
 
 
@@ -132,9 +130,7 @@ body::-webkit-scrollbar-thumb{
 
 
 
-
-
-/* MENSAJE DE TOASTIFY */
+/*TOASTIFY */
 .toast{
     z-index: 10;
     position: fixed;
@@ -249,8 +245,21 @@ body::-webkit-scrollbar-thumb{
     transform: scale(1.05);
 }
 
+.btn-info{
+    color: white;
+    font-size: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
 
-
+.btn-danger{
+    font-size: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+#text_footer{
+    text-align: center;
+}
 
 
 
@@ -262,12 +271,16 @@ body::-webkit-scrollbar-thumb{
 .ventas{
     display: flex;
     flex-direction: row;
+    width: 70%;
 
     padding: 3%;
-    margin: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
     border: solid rgb(25, 48, 131) 6px;
     border-radius: 5%;   
     box-shadow: 0 0 30px 25px rgba(0,0,0,0.50);
+
+    background: rgb(33, 60, 122);
 }
 .ventas p{
     font-size: 2.5vh;
@@ -298,9 +311,10 @@ body::-webkit-scrollbar-thumb{
 }
 
 .simulador_cuotas{
+    flex: 1;
     margin-left: 3%;
     font-size: 20px;
-    color: brown;
+    color: white;
 }
 
 
@@ -389,7 +403,7 @@ body::-webkit-scrollbar-thumb{
     border-top: 6px solid;
     border-color: rgba( 23, 42, 110);
 
-    background:rgb(23,42,85);
+    background:rgb(33, 60, 122);
     background-attachment: fixed;
 
     box-shadow: 0 0 30px 25px rgba(0,0,0,0.50);
@@ -444,9 +458,18 @@ body::-webkit-scrollbar-thumb{
 }
 
 
-/**************************************    RESPONSIVE MOBILE   *********************/
 
+
+
+
+
+
+
+
+
+/**************************************    RESPONSIVE MOBILE   *********************/
 /*Vista Mobile*/
+
 @media screen and (max-width: 1080px){
 
     /*Header*/
@@ -462,30 +485,30 @@ body::-webkit-scrollbar-thumb{
     }
     
 
-/*FOOTER*/
-.footer{
-    flex: 1;
-    display: flex;
-    flex-wrap: nowrap;
-    width: 100%;
-    align-content: center;
-    flex-direction: column;
-    align-items: center; 
-    justify-items: center;
-    justify-content: center;
-    gap: 2vh;
-}
-.footer .footer_contacto{
-    margin-left: 0;
-    margin-top: 4vh;
-}
-.footer .iconos_redes{
-    margin-left: 0;
-    margin-bottom: 2vh;
-}
-.mapa{
-    display: none;
-}
+    /*FOOTER*/
+    .footer{
+        flex: 1;
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+        align-content: center;
+        flex-direction: column;
+        align-items: center; 
+        justify-items: center;
+        justify-content: center;
+        gap: 2vh;
+    }
+    .footer .footer_contacto{
+        margin-left: 0;
+        margin-top: 4vh;
+    }
+    .footer .iconos_redes{
+        margin-left: 0;
+        margin-bottom: 2vh;
+    }
+    .mapa{
+        display: none;
+    }
 
     /*Botones Wsp/Top_Page Desactivados en Mobile*/
     .Top_Button{
@@ -494,10 +517,22 @@ body::-webkit-scrollbar-thumb{
     .whatsapp{
         display: none;
     }
+
+    .ventas{
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 800px){
     .titulo_header{
         margin-left: 8%;
+    }
+}
+
+
+@media screen and (max-width: 1280px){
+
+    .iconos_redes ul li a{
+        font-size: 60px;
     }
 }

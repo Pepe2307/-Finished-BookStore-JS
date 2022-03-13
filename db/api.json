@@ -33,7 +33,8 @@
       "id": 5,
       "title": "Manga ChainsawMan",
       "thumbnailUrl": "https://picsum.photos/id/40/600",
-      "picture": "./assets/Galeria/chainsawman.jpg"
+      "picture": "./assets/Galeria/chainsawman.jpg",
+      "id_2": "boton_9"
     },
     {
       "precio": 900,
@@ -62,5 +63,12 @@
       "title": "Coleccion de libros Harry Potter",
       "thumbnailUrl": "https://picsum.photos/id/50/600",
       "picture": "./assets/Galeria/harry_potter.jpg"
+    },
+    {
+      "precio": 900,
+      "id": 6,
+      "title": "El Codigo Da Vinci",
+      "thumbnailUrl": "https://picsum.photos/id/50/600",
+      "picture": "./assets/Galeria/Codigo_Davinci.jpg"
     }
-  ]
+]
